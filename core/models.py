@@ -24,7 +24,7 @@ class contrgrupp(models.Model):
 class Priv(models.Model):
     grup=models.ForeignKey(contrgrupp, on_delete=models.CASCADE, verbose_name='Група')
     us=models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Група')
-    cod=models.CharField( verbose_name='cod')
+    cod=models.CharField(max_length=99,verbose_name='cod')
 
     class Meta:
         db_table = 'priv'
