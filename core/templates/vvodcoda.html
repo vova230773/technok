@@ -1,0 +1,27 @@
+<main data-title = "{{title}}" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+    
+    <div class="row g-3">
+
+      <div class="col-md-5 col-lg-6">
+
+        <form method="post" action="{% url 'core:vvid' %} "class="post-form">
+          {% csrf_token %}
+          <div class="row g-3">
+            <div class="mb-3">
+                <label for="id_name" class="form-label">Введіть код доступу</label>
+                <input type="text" class="form-control" autofocus="True"
+                value="" 
+                name="name1" id="id_name"
+                placeholder="Вставте код доступу"
+                required>
+            </div>
+              {% comment %} {{form}} {% endcomment %}
+          <div class="col-6">
+            <button class="w-100 btn btn-primary btn-lg" type="submit">ок</button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </main>

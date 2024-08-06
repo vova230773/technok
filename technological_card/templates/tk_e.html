@@ -1,0 +1,41 @@
+
+
+<main data-title = "{{tkk.name}}" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+			 <div class="card">
+				<div class="card-body">
+				
+						<div class="col-6"> 
+							<p id="org_id" style="display:none"></p>
+							<div class="org_header">Дані tk</div>
+
+							    <form  action="{% url 'core:tk_e' tk_id=tkk.pk %}" method="post"> 
+									{% csrf_token %}
+									 <div class="mb-3">
+										<label for="id_product" class="form-label">ТМЦ</label>
+										<select id="id_product" class="form-select" placeholder="ТМЦ">
+										  <option value={{ form.product}}</option>
+										  
+										</select>
+										{% comment %} <input type="text" class="form-control" autofocus="True"
+										value="{{  }}" 
+										placeholder="тмц"
+										required> {% endcomment %}
+								    </div>  
+									
+
+                                     <div class="mb-3">
+										<label for="id_name" class="form-label">guid</label>
+										<input type="text" class="form-control" autofocus="True"
+										value="{{ tkk.guid }}" 
+										name="guid" id="id_guid"
+										placeholder="guid"
+										required>
+									 </div> 
+
+				              <button type="submit" class="save btn btn-dark btn-block">Записати</button>
+				              <button type="submit" class="save btn btn-dark btn-block">Закрити</button>
+			              </form>  
+               </div>
+			      </div> 
+		 
+</main>

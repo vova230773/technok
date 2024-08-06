@@ -1,0 +1,54 @@
+<main data-title = "{{title}}" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+   
+    <h2 class="title m-5">Операція</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+          <col width="5%" /> 
+          <col width="6%" /> 
+          <col width="7%" /> 
+          <col width="5%" /> 
+          <col width="20%" /> 
+          <col width="5%" /> 
+        <thead>
+          <tr>
+            
+            <th>Назва</th>
+            <th>Артикул</th>
+           
+          </tr>
+        </thead>
+          {% for op in fignua %}
+        
+        <tbody>
+       
+             <tr>
+              <td>{{op.create_at}}</td>
+              <td><a 
+              href="{% url 'core:oper'  %}"
+              hx-get="{% url 'core:oper'  %}"
+              hx-target="#main-content"
+              hx-push-url="true"
+              hx-indicator = "#content-loader"
+              hx-on="htmx:beforeRequest: event.detail.target.innerHTML = ''"
+              >{{op.name}}</a><br> yyyy {{op.name}}</td>
+
+
+              <td>{{op.name}}</td>
+              <td>{{op.name}}</td>
+              <td>
+                    Директор :{{op.name}} <br>
+                    Телефон :{{op.name}}<br>
+                    Вулиця :{{op.name}}<br>
+                    
+              </td>
+              <td>{{op.name}}</td>
+            </tr>
+   
+
+        </tbody> 
+     
+         {% endfor in %} 
+      </table>
+      <a href="{% url 'core:create_oper'%}" class="btn btn-primary">Створити</a>
+    </div>
+</main>

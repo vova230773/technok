@@ -1,0 +1,59 @@
+
+    
+    <main data-title = "{{title}}" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      
+        {{spis}}
+      <h2 class="title m-5">Контрагенти</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+            <col width="5%" /> 
+    		<col width="6%" /> 
+    		<col width="7%" /> 
+    		<col width="5%" /> 
+    		<col width="20%" /> 
+    		<col width="5%" /> 
+          <thead>
+            <tr>
+              <th>Дата контакта</th>
+              <th>Організація</th>
+              <th>Країна , регіон</th>
+              <th>Місто</th>
+              <th>Стан</th>
+              <th>Статус</th>
+            </tr>
+          </thead>
+           {% for cont in fignua %}
+          
+          <tbody>
+         
+               <tr>
+                <td>{{cont.create_at}}</td>
+                <td><a 
+                href="{% url 'core:company' cont.slug %}"
+                hx-get="{% url 'core:company' cont.slug %}"
+                hx-target="#main-content"
+                hx-push-url="true"
+                hx-indicator = "#content-loader"
+                hx-on="htmx:beforeRequest: event.detail.target.innerHTML = ''"
+                >{{cont.name}}</a><br> Код ЄДРПОУ {{cont.okpo_cod}}</td>
+
+
+                <td>{{cont.country}}</td>
+                <td>{{cont.city}}</td>
+                <td>
+                      Директор :{{cont.director}} <br>
+                      Телефон :{{cont.phone}}<br>
+                      Вулиця :{{cont.street}}<br>
+                      
+                </td>
+                <td>{{cont.slug}}</td>
+              </tr>
+     
+
+          </tbody>
+       
+          {% endfor in %}
+        </table>
+        <a href="{% url 'core:create_company'%}" class="btn btn-primary">Створити</a>
+      </div>
+    </main>

@@ -1,0 +1,39 @@
+
+
+<main data-title = "{{tmcc.name}}" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+			 <div class="card">
+				<div class="card-body">
+				
+						<div class="col-6"> 
+							<p id="org_id" style="display:none"></p>
+							<div class="org_header">Дані tmc</div>
+
+							    <form  action="{% url 'core:tmc_e' tmc_id=tmcc.pk %}" method="post"> 
+									{% csrf_token %}
+									<div class="mb-3">
+										<label for="id_name" class="form-label">Коротка назва</label>
+										<input type="text" class="form-control" autofocus="True"
+									
+										value="{{ tmcc.name }}" 
+										name="name" id="id_name"
+										placeholder="Коротка назва"
+										required>
+									</div> 
+
+                  <div class="mb-3">
+										<label for="id_name" class="form-label">guid</label>
+										<input type="text" class="form-control" autofocus="True"
+										
+                    value="{{ tmcc.guid }}" 
+										name="guid" id="id_guid"
+										placeholder="guid"
+										required>
+									</div> 
+
+				              <button type="submit" class="save btn btn-dark btn-block">Записати</button>
+				              <button type="submit" class="save btn btn-dark btn-block">Закрити</button>
+			              </form>  
+               </div>
+			      </div> 
+		 
+</main>

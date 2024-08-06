@@ -1,0 +1,89 @@
+<!doctype html>
+{% if user.is_authenticated %}
+<html lang="en">
+{% load static %}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'js/htmx.min.js' %}"></script>
+    
+    <title>{{title}}</title>
+</head>
+
+<body>
+
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Ellada</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Пошук" aria-label="Search">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                {% comment %} <a class="nav-link" href="{% url 'users:login' %}">ВХІД</a> {% endcomment %}
+            </li>
+        </ul>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/admin">Адмінка</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/logout">Вихід</a>
+               
+            </li>
+        </ul>
+
+       
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/profile">Мій профіль</a>
+               
+            </li>
+        </ul>
+        
+
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                {% include "components/notifications.html" %}
+            </li>
+        </ul>
+        
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            {% include 'components/sidebarMenu.html' %}
+            <progress id="content-loader" class="htmx-indicator" max="100"></progress>
+            <div id="main-content">
+            {% block content %}
+            
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+    <!-- Контент -->
+    <div class="container">
+        <div class="row mt-1">
+            <div class="col-lg-2">
+                <!-- Пустой блок на Ваше усмотрение -->
+            </div>
+            
+        </div>
+    </div>
+    <script src="{% static 'assets/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+    <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static "js/jquery/jquery-3.7.0.min.js" %}"></script>
+    <script src="{% static "js/jquery-ajax.js" %}"></script>
+    
+</body>
+</html>
+{% endif %}

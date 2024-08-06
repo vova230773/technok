@@ -1,0 +1,54 @@
+<main data-title = "{{title}}" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+   
+    <h2 class="title m-5">Технологічні карти</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+          <col width="5%" /> 
+          <col width="6%" /> 
+          <col width="7%" /> 
+          <col width="5%" /> 
+          <col width="20%" /> 
+          <col width="5%" /> 
+        <thead>
+          <tr>
+            <th>Дата </th>
+            <th>Продукція</th>
+            <th>Артикул</th>
+           
+          </tr>
+        </thead>
+          {% for ttk in fignua %}
+        
+        <tbody>
+       
+             <tr>
+              <td>{{ttk.create_at}}</td>
+              <td><a 
+                href="{% url 'core:tk_e'  tk_id=ttk.pk %}"
+                hx-get="{% url 'core:tk_e' tk_id=ttk.pk  %}"
+              hx-target="#main-content"
+              hx-push-url="true"
+              hx-indicator = "#content-loader"
+              hx-on="htmx:beforeRequest: event.detail.target.innerHTML = ''"
+              >{{ttk.product}}</a><br> fff {{ttk.product}}</td>
+
+
+              <td>{{ttk.product}}</td>
+              <td>{{ttk.product}}</td>
+              <td>
+                    Директор :{{ttk.product}} <br>
+                    Телефон :{{ttk.product}}<br>
+                    Вулиця :{{ttk.product}}<br>
+                    
+              </td>
+              <td>{{ttk.product}}</td>
+            </tr>
+   
+
+        </tbody> 
+     
+        {% endfor in %} 
+      </table>
+      <a href="{% url 'core:create_tk'%}" class="btn btn-primary">Створити</a>
+    </div>
+</main>
